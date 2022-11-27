@@ -15,4 +15,17 @@
   <string name="send">SEND</string>
   <string name="title_activity_AddFilm">Add Film</string>
   <string name="title_activity_Profile">My Profile</string>
+  <string name="newsletter">NewsLetter</string>
+  <string name="username">Username</string>
+  <string name="email">Email</string>
+  <string name="cognom">Cognom</string>
+  <string name="biografia">Biografia</string>
+  <string name="nom">Nom</string>
+  <string name="spinGenere">SpinnerGenere</string>
+
+  <string-array name="spinnerGenero">
+    <item>Masculí</item>
+    <item>Femení</item>
+    <item>Altres</item>
+  </string-array>
 </resources>
