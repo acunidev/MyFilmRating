@@ -11,7 +11,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 public class Profile extends AppCompatActivity {
 
-  final private static int defaultValue = 0;
+  SharedPreferences sharedPref;
   private EditText userName;
   private EditText email;
   private EditText nom;
@@ -25,7 +25,6 @@ public class Profile extends AppCompatActivity {
   protected void onCreate(Bundle savedInstanceState) {
     super.onCreate(savedInstanceState);
     setContentView(R.layout.profile);
-    addItemsSpinner();
     initElements();
     getData();
   }
@@ -36,32 +35,9 @@ public class Profile extends AppCompatActivity {
     saveData();
   }
 
-  @Override
-  protected void onResume() {
-    super.onResume();
-    getData();
-  }
-
-  @Override
-  protected void onStart() {
-    super.onStart();
-    getData();
-  }
-
-  @Override
-  protected void onStop() {
-    super.onStop();
-    saveData();
-  }
-
-  @Override
-  protected void onDestroy() {
-    super.onDestroy();
-    saveData();
-  }
 
   public void saveData() {
-    SharedPreferences sharedPref = getSharedPreferences("Profile", Context.MODE_PRIVATE);
+    sharedPref = getSharedPreferences("Profile", Context.MODE_PRIVATE);
     SharedPreferences.Editor editor = sharedPref.edit();
     editor.putString(getString(R.string.username), userName.getText().toString());
     editor.putString(getString(R.string.email), email.getText().toString());
@@ -74,7 +50,7 @@ public class Profile extends AppCompatActivity {
   }
 
   public void getData() {
-    SharedPreferences sharedPref = getSharedPreferences("Profile", Context.MODE_PRIVATE);
+    sharedPref = getSharedPreferences("Profile", Context.MODE_PRIVATE);
     userName.setText(sharedPref.getString(getString(R.string.username), ""));
     email.setText(sharedPref.getString(getString(R.string.email), ""));
     nom.setText(sharedPref.getString(getString(R.string.nom), ""));
@@ -90,32 +66,27 @@ public class Profile extends AppCompatActivity {
         spinner.setSelection(index);
       }
     }
-
   }
 
   public void initElements() {
-    userName.findViewById(R.id.txtUserName);
-    email.findViewById(R.id.txtEmail);
-    nom.findViewById(R.id.txtName);
-    cognom.findViewById(R.id.txtCognom);
-    biografia.findViewById(R.id.txtBio);
-    spinner.findViewById(R.id.spinnerGenero);
-    checkBox.findViewById(R.id.checkNews);
+    userName = findViewById(R.id.txtUserName);
+    email = findViewById(R.id.txtEmail);
+    nom = findViewById(R.id.txtName);
+    cognom = findViewById(R.id.txtCognom);
+    biografia = findViewById(R.id.txtBio);
+    spinner = findViewById(R.id.sniper);  // porqe no va??
+    checkBox = findViewById(R.id.checkNews);
 
+    spinner = (Spinner) (findViewById(R.id.sniper));
 
-  }
-
-  public void addItemsSpinner() {
-    Spinner spinner = (Spinner) findViewById(R.id.spinnerGenero);
-// Create an ArrayAdapter using the string array and a default spinner layout
     ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(this,
                                                                          R.array.spinnerGenero,
-                                                                         android.R.layout.simple_spinner_item);
-// Specify the layout to use when the list of choices appears
+                                                                         android.R.layout.simple_spinner_dropdown_item);
     adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-// Apply the adapter to the spinner
     spinner.setAdapter(adapter);
   }
+
+  //
 }
 
 
