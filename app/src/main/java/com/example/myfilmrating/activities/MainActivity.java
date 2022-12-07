@@ -1,10 +1,11 @@
-package com.example.myfilmrating;
+package com.example.myfilmrating.activities;
 
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import androidx.appcompat.app.AppCompatActivity;
+import com.example.myfilmrating.R;
 
 public class MainActivity extends AppCompatActivity {
 

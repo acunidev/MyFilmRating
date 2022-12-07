@@ -1,45 +1,44 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout
-  xmlns:android="http://schemas.android.com/apk/res/android"
-  xmlns:app="http://schemas.android.com/apk/res-auto"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
   xmlns:tools="http://schemas.android.com/tools"
   android:layout_width="match_parent"
   android:layout_height="match_parent"
-  tools:context=".AddFilm">
-
-  <Button
-    android:id="@+id/implicit_Intent"
-    android:layout_width="wrap_content"
-    android:layout_height="wrap_content"
-    android:layout_marginTop="25dp"
-    android:onClick="openImplicitIntent"
-    android:text="@string/send"
-    app:layout_constraintEnd_toEndOf="parent"
-    app:layout_constraintStart_toStartOf="parent"
-    app:layout_constraintTop_toBottomOf="@id/movieInputText"/>
+  android:gravity="center"
+  android:orientation="vertical"
+  tools:context=".activities.AddFilm">
 
   <EditText
     android:id="@+id/movieInputText"
     android:layout_width="300dp"
     android:layout_height="wrap_content"
-    android:hint="@string/movie_name"
-    app:layout_constraintBottom_toBottomOf="parent"
-    app:layout_constraintEnd_toEndOf="parent"
-    app:layout_constraintHorizontal_bias="0.495"
-    app:layout_constraintStart_toStartOf="parent"
-    app:layout_constraintTop_toTopOf="parent"
-    app:layout_constraintVertical_bias="0.145"/>
+    android:backgroundTint="@color/purple_500"
+    android:hint="@string/movie_name" />
 
-  <TextView
-    android:id="@+id/infoMovie"
+  <EditText
+    android:id="@+id/directorInputText"
+    android:layout_width="300dp"
+    android:layout_height="wrap_content"
+    android:backgroundTint="@color/purple_500"
+    android:hint="@string/director_name" />
+
+  <EditText
+    android:id="@+id/yearInputText"
+    android:layout_width="300dp"
+    android:layout_height="wrap_content"
+    android:backgroundTint="@color/purple_500"
+    android:hint="@string/year" />
+
+  <RatingBar
+    android:id="@+id/ratingBar"
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
-    android:textSize="24sp"
-    app:layout_constraintBottom_toBottomOf="parent"
-    app:layout_constraintEnd_toEndOf="parent"
-    app:layout_constraintStart_toStartOf="parent"
-    app:layout_constraintTop_toBottomOf="@id/implicit_Intent"
-    app:layout_constraintVertical_bias="0.2"
-    />
+    android:backgroundTint="@color/purple_500" />
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+  <Button
+    android:id="@+id/btnAddFilm"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:layout_marginBottom="96dp"
+    android:text="@string/add_film" />
+
+</LinearLayout>

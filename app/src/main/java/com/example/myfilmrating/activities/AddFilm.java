@@ -1,35 +1,84 @@
-package com.example.myfilmrating;
+package com.example.myfilmrating.activities;
 
 import android.content.Intent;
-import android.database.Cursor;
-import android.media.MediaMetadataRetriever;
-import android.net.Uri;
 import android.os.Bundle;
-import android.provider.OpenableColumns;
-import android.util.Log;
 import android.view.View;
+import android.view.View.OnClickListener;
+import android.widget.Button;
 import android.widget.EditText;
-import android.widget.TextView;
+import android.widget.RatingBar;
+import android.widget.Toast;
 import androidx.appcompat.app.AppCompatActivity;
-import java.util.Locale;
+import com.example.myfilmrating.R;
+import com.example.myfilmrating.database.AppDatabaseFilms;
+import com.example.myfilmrating.database.Entity.Film;
+import com.example.myfilmrating.database.dao.FilmDao;
+import com.example.myfilmrating.filmRepo.FilmRepository;
+import com.example.myfilmrating.filmRepo.FilmeRepositoryImpl;
 
-public class AddFilm extends AppCompatActivity {
+public class AddFilm extends AppCompatActivity implements OnClickListener {
 
+  Film film;
+  AppDatabaseFilms filmsDB;
+  FilmDao daoFilm;
   EditText message;
+  RatingBar ratingBar;
+  EditText directorName;
+  EditText movieName;
+  EditText movieYear;
+  Button btnAddFilm;
+  AppDatabaseFilms databaseFilms;
+  FilmDao filmDao;
+
 
   @Override
   protected void onCreate(Bundle savedInstanceState) {
     super.onCreate(savedInstanceState);
     setContentView(R.layout.activity_add_film);
-    message = findViewById(R.id.movieInputText);
-    Intent test = getIntent();
-    Uri uri = test.getData();
-    String actionName = test.getAction();
+    initElements();
+//    TODO Tasca Activitat 4.3
 
-    if (Intent.ACTION_VIEW.equals(actionName)) {
-      infoFile(uri);
-    }
+//    message = findViewById(R.id.movieInputText);
+//    Intent test = getIntent();
+//    Uri uri = test.getData();
+//    String actionName = test.getAction();
+
+//    if (Intent.ACTION_VIEW.equals(actionName)) {
+//      infoFile(uri);
+//    }
   }
+
+  private void addToSQLite() {
+    filmsDB = AppDatabaseFilms.getInstance(this.getApplicationContext());
+    daoFilm = filmsDB.filmDao();
+
+    FilmRepository filmRepo = new FilmeRepositoryImpl(daoFilm);
+
+    film = new Film();
+    film.setMovieTitle(movieName.getText().toString());
+    film.setDirectorName(directorName.getText().toString());
+    film.setYear(Integer.parseInt(movieYear.getText().toString()));
+    film.setRating((int) ratingBar.getRating());
+
+    filmRepo.insertAll(film);
+  }
+
+  private void initElements() {
+    movieName = findViewById(R.id.movieInputText);
+    directorName = findViewById(R.id.directorInputText);
+    movieYear = findViewById(R.id.yearInputText);
+    ratingBar = findViewById(R.id.ratingBar);
+    btnAddFilm = findViewById(R.id.btnAddFilm);
+    btnAddFilm.setOnClickListener(this);
+  }
+
+  private void clearInputs() {
+    movieName.setText("");
+    directorName.setText("");
+    movieYear.setText("");
+    ratingBar.setRating(0);
+  }
+
 
   public void openImplicitIntent(View view) {
     // Create the text message with a string
@@ -44,9 +93,21 @@ public class AddFilm extends AppCompatActivity {
     }
   }
 
+  @Override
+  public void onClick(View view) {
+    switch (view.getId()) {
+      case R.id.btnAddFilm:
+        addToSQLite();
+        Toast.makeText(getApplicationContext(),
+                       "Movie: " + film.getMovieTitle() + " saved to the Database.",
+                       Toast.LENGTH_SHORT).show();
+        clearInputs();
+    }
+  }
+
+/*
   public void infoFile(Uri uri) {
 
-//    if (Intent.ACTION_VIEW.equals(test)) {
     Cursor cursor = getContentResolver().query(uri, null, null, null);
     int name = cursor.getColumnIndex(OpenableColumns.DISPLAY_NAME);
     int size = cursor.getColumnIndex(OpenableColumns.SIZE);
@@ -55,13 +116,14 @@ public class AddFilm extends AppCompatActivity {
     Log.i("Basic Info", Long.toString(cursor.getLong(size)));
     metadata(uri);
 
-//    }
   }
+*/
 
+/*
   public void metadata(Uri returnUri) {
     MediaMetadataRetriever retriever = new MediaMetadataRetriever();
     retriever.setDataSource(getApplicationContext(), returnUri);
-    TextView titleView = (TextView) findViewById(R.id.infoMovie);
+    TextView titleView = (TextView) findViewById(R.id.movieInputText);
     String title = retriever.extractMetadata(MediaMetadataRetriever.METADATA_KEY_TITLE);
     String artist = retriever.extractMetadata(MediaMetadataRetriever.METADATA_KEY_ARTIST);
     String year = retriever.extractMetadata(MediaMetadataRetriever.METADATA_KEY_YEAR);
@@ -79,4 +141,5 @@ public class AddFilm extends AppCompatActivity {
                                     title,
                                     artist, year, minutes, seconds, codec, height, width));
   }
+*/
 }

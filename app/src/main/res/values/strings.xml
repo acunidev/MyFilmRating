@@ -22,6 +22,9 @@
   <string name="biografia">Biografia</string>
   <string name="nom">Nom</string>
   <string name="spinGenere">SpinnerGenere</string>
+  <string name="director_name">Director Name</string>
+  <string name="add_film">Add film</string>
+  <string name="year">Year</string>
 
   <string-array name="spinnerGenero">
     <item>Masculí</item>

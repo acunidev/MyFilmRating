@@ -1,4 +1,4 @@
-package com.example.myfilmrating;
+package com.example.myfilmrating.activities;
 
 import android.content.Context;
 import android.content.SharedPreferences;
@@ -8,6 +8,7 @@ import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.Spinner;
 import androidx.appcompat.app.AppCompatActivity;
+import com.example.myfilmrating.R;
 
 public class Profile extends AppCompatActivity {
 
@@ -51,6 +52,7 @@ public class Profile extends AppCompatActivity {
 
   public void getData() {
     sharedPref = getSharedPreferences("Profile", Context.MODE_PRIVATE);
+    userName.setText(sharedPref.getString(getString(R.string.username), ""));
     userName.setText(sharedPref.getString(getString(R.string.username), ""));
     email.setText(sharedPref.getString(getString(R.string.email), ""));
     nom.setText(sharedPref.getString(getString(R.string.nom), ""));
