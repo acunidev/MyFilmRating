@@ -23,15 +23,33 @@ public class FilmeRepositoryImpl implements FilmRepository {
   }
 
   @Override
+  public List<Film> getAllOrderByMovieTitle() {
+    return filmDao.getAllOrderByMovieTitle();
+  }
+
+  @Override
+  public List<Film> getAllOrderByYear() {
+    return filmDao.getAllOrderByYear();
+  }
+
+  @Override
+  public List<Film> getAllOrderByRating() {
+    return filmDao.getAllOrderByRating();
+  }
+
+  @Override
   public Film findByName(String movieTitle, String dirName) {
     return filmDao.findByName(movieTitle, dirName);
   }
 
   @Override
-  public void insertAll(Film... film) {
+  public void insertAll(Film film) {
+    filmDao.insertAll(film);
   }
 
   @Override
-  public void delete(Film... film) {
+  public void delete(Film film) {
+    filmDao.delete(film);
   }
+
 }

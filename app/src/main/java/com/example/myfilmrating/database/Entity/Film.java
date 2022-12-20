@@ -14,7 +14,7 @@ public class Film {
   @ColumnInfo(name = "year")
   public int year;
   @ColumnInfo(name = "rating")
-  public int rating;
+  public long rating;
   @PrimaryKey(autoGenerate = true)
   private int idFilm;
 
@@ -35,11 +35,11 @@ public class Film {
     this.year = year;
   }
 
-  public int getRating() {
+  public long getRating() {
     return rating;
   }
 
-  public void setRating(int rating) {
+  public void setRating(long rating) {
     this.rating = rating;
   }
 

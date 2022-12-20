@@ -1,0 +1,46 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+  android:layout_width="match_parent"
+  android:layout_height="wrap_content"
+  android:background="?android:attr/selectableItemBackground"
+  android:orientation="horizontal">
+
+  <RatingBar
+    android:id="@+id/ratingMovie"
+    style="@style/CustomRatingBarStyle"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:layout_marginRight="15dp"
+    android:isIndicator="true"
+    android:numStars="5"
+    android:textStyle="bold" />
+
+  <TextView
+    android:id="@+id/movieNameList"
+    android:layout_width="wrap_content"
+    android:layout_height="match_parent"
+    android:layout_marginRight="15dp"
+    android:gravity="center"
+    android:text="Film"
+    android:textSize="16sp"
+    android:textStyle="bold" />
+
+  <TextView
+    android:id="@+id/movieDirectorList"
+    android:layout_width="wrap_content"
+    android:layout_height="match_parent"
+    android:layout_marginRight="15dp"
+    android:gravity="center"
+    android:text="@string/director_name"
+    android:textSize="16sp"
+    android:textStyle="bold" />
+
+  <TextView
+    android:id="@+id/movieYearList"
+    android:layout_width="wrap_content"
+    android:layout_height="match_parent"
+    android:layout_marginRight="15dp"
+    android:gravity="center"
+    android:text="year"
+    android:textSize="16sp"
+    android:textStyle="bold" />
+</LinearLayout>

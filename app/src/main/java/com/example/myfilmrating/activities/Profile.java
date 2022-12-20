@@ -13,14 +13,14 @@ import com.example.myfilmrating.R;
 public class Profile extends AppCompatActivity {
 
   SharedPreferences sharedPref;
-  private EditText userName;
-  private EditText email;
-  private EditText nom;
-  private EditText cognom;
   private EditText biografia;
-  private Spinner spinner;
   private CheckBox checkBox;
+  private EditText cognom;
+  private EditText email;
   private int lastCheck;
+  private EditText nom;
+  private Spinner spinner;
+  private EditText userName;
 
   @Override
   protected void onCreate(Bundle savedInstanceState) {
@@ -79,7 +79,7 @@ public class Profile extends AppCompatActivity {
     spinner = findViewById(R.id.sniper);  // porqe no va??
     checkBox = findViewById(R.id.checkNews);
 
-    spinner = (Spinner) (findViewById(R.id.sniper));
+    spinner = findViewById(R.id.sniper);
 
     ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(this,
                                                                          R.array.spinnerGenero,

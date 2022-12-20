@@ -6,29 +6,26 @@
   android:layout_height="match_parent"
   tools:context=".activities.MyRates">
 
-  <com.google.android.material.appbar.AppBarLayout
-    android:layout_width="match_parent"
+  <Spinner
+    android:id="@+id/spinnerFilterBy"
+    android:layout_width="wrap_content"
     android:layout_height="wrap_content"
-    android:theme="@style/Theme.MyFilmRating.AppBarOverlay">
-
-    <androidx.appcompat.widget.Toolbar
-      android:id="@+id/toolbar"
-      android:layout_width="match_parent"
-      android:layout_height="?attr/actionBarSize"
-      android:background="?attr/colorPrimary"
-      app:popupTheme="@style/Theme.MyFilmRating.PopupOverlay" />
-
-  </com.google.android.material.appbar.AppBarLayout>
+    android:layout_gravity="center_horizontal" />
 
   <com.google.android.material.floatingactionbutton.FloatingActionButton
-    android:id="@+id/fab"
+    android:id="@+id/goToAddFilm"
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
     android:layout_gravity="bottom|end"
     android:layout_marginEnd="@dimen/fab_margin"
     android:layout_marginBottom="16dp"
-    app:srcCompat="@android:drawable/btn_plus" />
+    app:srcCompat="@android:drawable/ic_menu_add" />
 
-  <include layout="@layout/content_my_rates" />
+  <androidx.recyclerview.widget.RecyclerView
+    android:id="@+id/recyVw"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:layout_marginTop="50dp" />
+
 
 </androidx.coordinatorlayout.widget.CoordinatorLayout>

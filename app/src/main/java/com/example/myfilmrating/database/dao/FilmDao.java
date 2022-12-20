@@ -19,6 +19,15 @@ public interface FilmDao {
   @Query("SELECT * FROM Film WHERE movieTitle LIKE :movieTitle AND directorName LIKE :dirName LIMIT 1")
   Film findByName(String movieTitle, String dirName);
 
+  @Query("SELECT * FROM Film ORDER BY year DESC")
+  List<Film> getAllOrderByYear();
+
+  @Query("SELECT * FROM Film Order by movieTitle")
+  List<Film> getAllOrderByMovieTitle();
+
+  @Query("SELECT * FROM Film ORDER BY rating DESC")
+  List<Film> getAllOrderByRating();
+
   @Insert
   void insertAll(Film... film);
 

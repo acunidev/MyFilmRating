@@ -52,14 +52,13 @@ public class AddFilm extends AppCompatActivity implements OnClickListener {
     filmsDB = AppDatabaseFilms.getInstance(this.getApplicationContext());
     daoFilm = filmsDB.filmDao();
 
-    FilmRepository filmRepo = new FilmeRepositoryImpl(daoFilm);
-
     film = new Film();
     film.setMovieTitle(movieName.getText().toString());
     film.setDirectorName(directorName.getText().toString());
     film.setYear(Integer.parseInt(movieYear.getText().toString()));
-    film.setRating((int) ratingBar.getRating());
+    film.setRating((long) ratingBar.getRating());
 
+    FilmRepository filmRepo = new FilmeRepositoryImpl(daoFilm);
     filmRepo.insertAll(film);
   }
 

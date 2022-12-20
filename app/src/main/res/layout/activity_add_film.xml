@@ -30,9 +30,9 @@
 
   <RatingBar
     android:id="@+id/ratingBar"
+    style="@style/CustomRatingBarStyle"
     android:layout_width="wrap_content"
-    android:layout_height="wrap_content"
-    android:backgroundTint="@color/purple_500" />
+    android:layout_height="wrap_content" />
 
   <Button
     android:id="@+id/btnAddFilm"

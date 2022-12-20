@@ -10,11 +10,11 @@ import com.example.myfilmrating.database.dao.FilmDao;
 @Database(entities = {Film.class}, version = 1)
 public abstract class AppDatabaseFilms extends RoomDatabase {
 
-  private static volatile AppDatabaseFilms INSTANCE;
+  public static AppDatabaseFilms INSTANCE;
 
   public static AppDatabaseFilms getInstance(Context context) {
     if (INSTANCE == null) {
-      INSTANCE = Room.databaseBuilder(context, AppDatabaseFilms.class, "FilmsDB")
+      INSTANCE = Room.databaseBuilder(context, AppDatabaseFilms.class, "FilmsDB.db  ")
           .allowMainThreadQueries()
           .fallbackToDestructiveMigration()
           .build();
@@ -23,4 +23,5 @@ public abstract class AppDatabaseFilms extends RoomDatabase {
   }
 
   public abstract FilmDao filmDao();
+
 }

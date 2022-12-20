@@ -1,7 +1,5 @@
 package com.example.myfilmrating.activities;
 
-import android.content.Intent;
-import android.net.Uri;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -28,14 +26,6 @@ public class FirstFragment extends Fragment {
   public void onViewCreated(@NonNull View view, Bundle savedInstanceState) {
     super.onViewCreated(view, savedInstanceState);
 
-    binding.ExplicitIntentWeb.setOnClickListener(new View.OnClickListener() {
-      @Override
-      public void onClick(View view) {
-        Intent intentBrowser = new Intent(Intent.ACTION_VIEW,
-                                          Uri.parse("https://www.rottentomatoes.com/"));
-        startActivity(intentBrowser);
-      }
-    });
   }
 
   @Override
